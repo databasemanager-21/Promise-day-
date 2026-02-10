@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Promise Day 💍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:#fff;
+}
+
+/* Overlay */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.start-btn{
+  padding:18px 32px;
+  font-size:1.2rem;
+  border:none;
+  border-radius:30px;
+  background:#ff4f81;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(12px);
+  padding:35px;
+  border-radius:22px;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  animation:fadeIn 2s ease;
+}
+
+h1{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:1.4rem;
+  margin-bottom:18px;
+  color:#ffe6ee;
+}
+
+p{
+  font-size:1.05rem;
+  line-height:1.7;
+  margin-bottom:15px;
+}
+
+.signature{
+  margin-top:15px;
+  font-style:italic;
+}
+
+/* Animations */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Sparkling hearts */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:22px;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-110vh) scale(1.6);
+    opacity:0;
+  }
+}
+
+/* Sparkles */
+.sparkle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation:sparkle 3s linear infinite;
+}
+
+@keyframes sparkle{
+  0%{transform:scale(0);opacity:1;}
+  50%{transform:scale(1.5);opacity:0.9;}
+  100%{transform:scale(0);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Start Overlay -->
+<div class="overlay" id="overlay">
+  <button class="start-btn" onclick="startExperience()">
+    Tap to Begin 💖🎵
+  </button>
+</div>
+
+<!-- Card -->
+<div class="card">
+  <h1>Happy Promise Day 💍</h1>
+  <h2>Dear Swati 🌸</h2>
+
+  <p>
+    I promise to always be there for you,<br>
+    in your smiles and in your silence.
+  </p>
+
+  <p>
+    I promise to respect your feelings,<br>
+    protect your trust,<br>
+    and keep our bond forever special 🤍
+  </p>
+
+  <div class="signature">
+    — Your Best Friend 💫
+  </div>
+</div>
+
+<script>
+/* Start music */
+function startExperience(){
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.8;
+  music.play();
+  document.getElementById("overlay").style.display = "none";
+}
+
+/* Hearts */
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.animationDuration = (4 + Math.random()*3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+}
+setInterval(createHeart,400);
+
+/* Sparkles */
+function createSparkle(){
+  const sp = document.createElement("div");
+  sp.className = "sparkle";
+  sp.style.left = Math.random()*100 + "vw";
+  sp.style.top = Math.random()*100 + "vh";
+  document.body.appendChild(sp);
+  setTimeout(()=>sp.remove(),3000);
+}
+setInterval(createSparkle,300);
+</script>
+
+</body>
+</html>
